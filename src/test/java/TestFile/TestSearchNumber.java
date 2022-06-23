@@ -13,7 +13,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class TestSearchNumber {
     WebDriver driver;
-    String[] phoneNumberArray = new String[]{"0123456789", "0987654321"};
+    String[] phoneNumberArray = new String[]{"0987654321", "0123456789", "0969691870"};
     String baseUrl = "https://chat.zalo.me/";
     String screenshotFolderPath = "src/test/resource/screenshot";
 
@@ -36,20 +36,24 @@ public class TestSearchNumber {
             findFriendPage.setPhoneNumber(phoneNumberArray[i]);
             UserProfilePage userProfilePage = findFriendPage.findFriend();
             if (userProfilePage.isZlRegistered()) {
+                String displayName = userProfilePage.getDisplayName();
                 String gender = userProfilePage.getGender();
                 String birthday = userProfilePage.getBirthday();
+                System.out.println("display name: " + displayName);
                 System.out.println("gender: " + gender);
                 System.out.println("birthday: " + birthday);
+                Thread.sleep(1000);
                 String imageFileName = gender + "_" + phoneNumberArray[i];
                 String fileWithPath = FileUtils.getFilePath(screenshotFolderPath, imageFileName);
                 ImageUtils.takeScreenShot(driver, fileWithPath);
                 Thread.sleep(5000);
+                userProfilePage.clearPhone();
             }
         }
     }
 
     @After
     public void TearDown() {
-        driver.quit();
+//        driver.quit();
     }
 }
