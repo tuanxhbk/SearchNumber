@@ -2,8 +2,8 @@ package Util;
 
 public class FileUtils {
 
-    public static String getFilePath(String folderPath, String fileName) {
-        String filePath = folderPath + "/" + fileName + ".png";
+    public static String getImageFilePath(String folderPath, String fileName, String imageExtension) {
+        String filePath = folderPath + "/" + fileName + "." + imageExtension;
         return filePath;
     }
 }
