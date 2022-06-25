@@ -9,7 +9,7 @@ public class FindFriendPage {
 
     By txtbxPhoneNumber = By.cssSelector("[class='phone-i-input flx-1']");
 
-    By btnFindFriend = By.xpath("//body//div[@class='truncate' and contains(text(),'Tìm kiếm')]");
+    By btnFindFriend = By.xpath("//body//div[@data-translate-inner='STR_SEARCH']");
 
     public FindFriendPage(WebDriver driver) {
         this.driver = driver;

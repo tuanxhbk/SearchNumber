@@ -38,7 +38,7 @@ public class ExcelUtils {
             System.out.println(dataFormatter.formatCellValue(sheet1.getRow(1).getCell(6)));
 
 
-            System.out.println(getDataInColumnByBatch(sheet1, "Phone_No", 1, 1).toString());
+            System.out.println(getDataInColumnByBatch(sheet1, 1, 1).toString());
 
 
 
@@ -74,14 +74,14 @@ public class ExcelUtils {
         return columnIndex;
     }
 
-    public static List<String> getDataInColumnByBatch (Sheet sheet, String headerName, int headerRowNum, int fromRowNum) {
-        int colunmIndex = getColumnIndex(sheet, headerName, headerRowNum);
+    public static List<String> getDataInColumnByBatch (Sheet sheet, int columnIndex, int fromRowNum) {
+//        int colunmIndex = getColumnIndex(sheet, headerName, columnIndex);
         List<String> dataList = new ArrayList<>();
         DataFormatter dataFormatter = new DataFormatter();
 
         for (int i = fromRowNum; i < (fromRowNum + Constant.BATCH_SIZE); i++) {
             try {
-                String data = dataFormatter.formatCellValue(sheet.getRow(i).getCell(colunmIndex));
+                String data = dataFormatter.formatCellValue(sheet.getRow(i).getCell(columnIndex));
                 dataList.add(data);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -91,14 +91,14 @@ public class ExcelUtils {
         return dataList;
     }
 
-    public static List<String> getDataInColumnFromTo (Sheet sheet, String headerName, int headerRowNum, int fromRowNum, int toRowNum) {
-        int colunmIndex = getColumnIndex(sheet, headerName, headerRowNum);
+    public static List<String> getDataInColumnFromTo (Sheet sheet, int columnIndex, int fromRowNum, int toRowNum) {
+//        int colunmIndex = getColumnIndex(sheet, headerName, columnIndex);
         List<String> dataList = new ArrayList<>();
         DataFormatter dataFormatter = new DataFormatter();
 
         for (int i = fromRowNum - 1; i < toRowNum; i++) {
             try {
-                String data = dataFormatter.formatCellValue(sheet.getRow(i).getCell(colunmIndex));
+                String data = dataFormatter.formatCellValue(sheet.getRow(i).getCell(columnIndex));
                 dataList.add(data);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -120,5 +120,9 @@ public class ExcelUtils {
         } else {
             return fromRowNum + Constant.BATCH_SIZE - 1;
         }
+    }
+
+    public static void setDataToCell(Sheet sheet, int rowIndex, int columnIndex, String value) {
+        sheet.getRow(rowIndex).createCell(columnIndex).setCellValue(value);
     }
 }
