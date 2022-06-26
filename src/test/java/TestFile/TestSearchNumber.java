@@ -31,7 +31,7 @@ public class TestSearchNumber {
     @Test
     public void SearchNumber01() throws Exception {
         driver.get(Constant.BASE_URL);
-        Thread.sleep(10000);
+        Thread.sleep(Constant.WAIT_QR);
 
         ZaloPage zlPage = new ZaloPage(driver);
         FindFriendPage findFriendPage = zlPage.accessFindFriendFeature();

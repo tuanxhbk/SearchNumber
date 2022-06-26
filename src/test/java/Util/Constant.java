@@ -3,13 +3,13 @@ package Util;
 public class Constant {
 
     public static final int BATCH_SIZE = 1000;
-    public static final String DATA_PATH = "src/test/resource/data/viettel/viettel_96/viettel_960.xlsx";
+    public static final String DATA_PATH = "src/test/resource/data/viettel/viettel_96/viettel_969.xlsx";
     public static final String SHEET_NAME = "960";
     public static final String BASE_URL = "https://chat.zalo.me/";
-    public static final String SCREENSHOT_FOLDER_PATH = "src/test/resource/screenshot/viettel/960";
+    public static final String SCREENSHOT_FOLDER_PATH = "src/test/resource/screenshot/viettel/969";
     public static final String FIREFOX_DRIVER_PATH = "src/test/resource/driver/geckodriver.exe";
-    public static final int START_ROW_NUM = 20001;
-    public static final int END_ROW_NUM = 30001;
+    public static final int START_ROW_NUM = 600002;
+    public static final int END_ROW_NUM = 700001;
     public static final String ZL_STATUS_NOT = "NOT";
     public static final String ZL_STATUS_REG = "REG";
 
@@ -30,4 +30,7 @@ public class Constant {
     // Uniform Gender
     public static final String U_GENGER_MALE = "M";
     public static final String U_GENGER_FEMALE = "F";
+
+    // Wait to scan QR code (ms)
+    public static final int WAIT_QR = 20000;
 }
