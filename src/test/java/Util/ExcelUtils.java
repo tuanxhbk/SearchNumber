@@ -75,7 +75,6 @@ public class ExcelUtils {
     }
 
     public static List<String> getDataInColumnByBatch (Sheet sheet, int columnIndex, int fromRowNum) {
-//        int colunmIndex = getColumnIndex(sheet, headerName, columnIndex);
         List<String> dataList = new ArrayList<>();
         DataFormatter dataFormatter = new DataFormatter();
 
@@ -92,7 +91,6 @@ public class ExcelUtils {
     }
 
     public static List<String> getDataInColumnFromTo (Sheet sheet, int columnIndex, int fromRowNum, int toRowNum) {
-//        int colunmIndex = getColumnIndex(sheet, headerName, columnIndex);
         List<String> dataList = new ArrayList<>();
         DataFormatter dataFormatter = new DataFormatter();
 
