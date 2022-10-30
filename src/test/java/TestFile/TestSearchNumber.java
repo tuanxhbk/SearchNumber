@@ -122,6 +122,7 @@ public class TestSearchNumber {
                         // Write screenshot link into Excel file
                         // TO DO
                         userProfilePage.clearPhone();
+                        Thread.sleep(1000);
                     } else {
                         // Process when phone number has NOT been registered Zl
                         System.out.println(phoneNumList.get(i) + " not registered Zl");
