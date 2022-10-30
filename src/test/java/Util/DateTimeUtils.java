@@ -14,16 +14,20 @@ public class DateTimeUtils {
         return yob;
     }
 
-    public static String getDOBYYYYMMDD(String dobOrigin) {
+    public static String getDOB(String dobOrigin, String dateFormat) {
         String dobResult = "";
         if (!dobOrigin.equals("")) {
             String numberOnly = dobOrigin.replaceAll("[^0-9]", "");
             if (numberOnly.length() == 8){
-                String dd = numberOnly.substring(numberOnly.length() - 8, numberOnly.length() - 6);
-                String mm = numberOnly.substring(numberOnly.length() - 6, numberOnly.length() - 4);
-                String yyyy = numberOnly.substring(numberOnly.length() - 4);
+                switch (dateFormat) {
+                    case "YYYYMMDD":
+                        String dd = numberOnly.substring(numberOnly.length() - 8, numberOnly.length() - 6);
+                        String mm = numberOnly.substring(numberOnly.length() - 6, numberOnly.length() - 4);
+                        String yyyy = numberOnly.substring(numberOnly.length() - 4);
 
-                dobResult = yyyy + mm + dd;
+                        dobResult = yyyy + mm + dd;
+                        break;
+                }
             }
         }
         return dobResult;
@@ -35,7 +39,7 @@ public class DateTimeUtils {
     }
 
     @Test
-    public void testGetDOBYYYYMMDD() {
-        System.out.println(getDOBYYYYMMDD("05 tháng 08, 1988"));
+    public void testGetDOB() {
+        System.out.println(getDOB("05 tháng 08, 1988", "YYYYMMDD"));
     }
 }
