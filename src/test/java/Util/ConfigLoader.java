@@ -46,4 +46,10 @@ public class ConfigLoader {
         if (prop != null) return prop;
         else throw new RuntimeException("property client_id is not specified in the config.properties file");
     }
+
+    public String getBadooListCsvPath() {
+        String prop = properties.getProperty("badoo_list_csv_path");
+        if (prop != null) return prop;
+        else throw new RuntimeException("property client_id is not specified in the config.properties file");
+    }
 }
