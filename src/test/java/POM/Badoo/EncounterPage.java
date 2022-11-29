@@ -27,9 +27,7 @@ public class EncounterPage {
             WebElement element = wait.until(ExpectedConditions.elementToBeClickable(likeBtn));
             element.click();
         } catch (Exception exception) {
-
         }
-
     }
 
     public void clickSkipNoti() {
@@ -38,7 +36,6 @@ public class EncounterPage {
             WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(skipNotiBtn));
             element.click();
         } catch (Exception exception) {
-
         }
     }
 

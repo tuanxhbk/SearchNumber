@@ -44,7 +44,7 @@ public class BadooLikeTest {
         driver = new ChromeDriver(options);
 
         // Setup csv writer
-        CSVPrinter badooListCsvPrinter = this.getBadooListCsvPrinter(badooListCsvPath);
+        CSVPrinter badooListCsvPrinter = this.getBadooListCsvPrinter(getFilePath(badooListCsvPath, ".csv", "yyyyMMdd"));
 
         // Sign in
         driver.get(signInUrl);
@@ -57,13 +57,13 @@ public class BadooLikeTest {
         EncounterPage encounterPage = new EncounterPage(driver);
         // Outer loop
         int outerLoopMax = 100;
+        int innerLoopMax = 10;
         for (int i = 0; i < outerLoopMax; i++) {
-            int innerLoopMax = 10;
             for (int j = 0; j < innerLoopMax; j++) {
                 int loopTime = i * innerLoopMax + j + 1;
                 System.out.println("Loop: " + loopTime);
 //                Thread.sleep(5000);
-//                takeSnapShot(driver, getFilePath(badooScreenshotBase, ".png"));
+//                takeSnapShot(driver, getFilePath(badooScreenshotBase, ".png", "yyyyMMdd_HHmmss"));
 
                 String profileName = encounterPage.getProfileName();
                 String profileAge = encounterPage.getProfileAge();
@@ -101,9 +101,9 @@ public class BadooLikeTest {
         FileUtils.copyFile(SrcFile, DestFile);
     }
 
-    public String getFilePath(String prefix, String suffix) {
+    public String getFilePath(String prefix, String suffix, String dateTimeFormat) {
         // Create object of SimpleDateFormat class and decide the format
-        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+        DateFormat dateFormat = new SimpleDateFormat(dateTimeFormat);
 
         //get current date time with Date()
         Date date = new Date();
@@ -137,7 +137,7 @@ public class BadooLikeTest {
 
     @Test
     public void testFilePath() {
-        String filePath = getFilePath(badooScreenshotBase, ".png");
+        String filePath = getFilePath(badooScreenshotBase, ".png", "yyyyMMdd_HHmmss");
         System.out.println(filePath);
     }
 }
