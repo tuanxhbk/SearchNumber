@@ -70,6 +70,12 @@ public class EncounterPage {
     }
 
     public String getProfileImageSrc() {
-        return driver.findElement(profileImage).getAttribute("src");
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(profileImage));
+            return element.getAttribute("src");
+        } catch (Exception exception) {
+            return "";
+        }
     }
 }
