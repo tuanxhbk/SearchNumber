@@ -44,19 +44,19 @@ public class ListItem {
 
                 BufferedWriter logWriter = Files.newBufferedWriter(Paths.get(LOG_CSV_FILE));
                 CSVPrinter logCsvPrinter = new CSVPrinter(logWriter, CSVFormat.DEFAULT
-                        .withHeader("Description"));
+                        .withHeader("Url", "No of items"));
                 ) {
             for(int baseIndex = 1; baseIndex <= allPage; baseIndex++) {
-                String baseUrl = baseUrlPrefix + baseIndex + baseUrlSuffix;
-                driver.get(baseUrl);
-                logCsvPrinter.printRecord(baseIndex);
+                String pageUrl = baseUrlPrefix + baseIndex + baseUrlSuffix;
+                driver.get(pageUrl);
+                logCsvPrinter.printRecord(pageUrl, "");
 
                 for(int columnIndex = 1; columnIndex <= allColumn; columnIndex++) {
                     String liXpath = liXpathPrefix + columnIndex + liXpathSuffix;
                     List<WebElement> liList = driver.findElements(By.xpath(liXpath));
 
                     System.out.println(liList.size());
-                    logCsvPrinter.printRecord(liList.size());
+                    logCsvPrinter.printRecord("",liList.size());
 
                     for(int i = 0; i < liList.size(); i++) {
                         String elementText = liList.get(i).getText();
