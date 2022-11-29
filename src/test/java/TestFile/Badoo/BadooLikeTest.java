@@ -2,6 +2,7 @@ package TestFile.Badoo;
 
 import POM.Badoo.EncounterPage;
 import POM.Badoo.SignInPage;
+import Util.ConfigLoader;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.openqa.selenium.OutputType;
@@ -17,20 +18,21 @@ import java.util.Date;
 
 public class BadooLikeTest {
     public static WebDriver driver;
-    public static String driverPath = "src/test/resource/driver/chromedriver.exe";
-    private static final String BADOO_SCREENSHOT_BASE = "src/test/resource/screenshot/badoo/";
+    public static ConfigLoader configLoader = ConfigLoader.getInstance();
+    public static String driverPath = configLoader.getChromeDriverPath();
+    private static String badooScreenshotBase = configLoader.getBadooScreenshotBase();
 
     @Test
     public void BadooLikeTest01() throws Exception {
-        String signInUrl = "https://badoo.com/en-us/signin/?f=top";
+        String signInUrl = configLoader.getBadooSignInUrl();
         String encounterUrl = "https://badoo.com/encounters";
-        String username = "nguyenmanhtuan_xh@yahoo.com";
-        String password = "50503324xh";
+        String username = configLoader.getBadooUsername();
+        String password = configLoader.getBadooPassword();
 
         // Setting up Chrome driver path.
         System.setProperty("webdriver.chrome.driver", driverPath);
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless", "--window-size=1920,1200","--ignore-certificate-errors");
+        options.addArguments("--headless", "--window-size=1920,1200", "--ignore-certificate-errors");
         driver = new ChromeDriver(options);
 
         // Sign in
@@ -43,10 +45,10 @@ public class BadooLikeTest {
 //        driver.get(encounterUrl);
         EncounterPage encounterPage = new EncounterPage(driver);
 
-        for(int i = 1; i <= 1000; i++) {
+        for (int i = 1; i <= 1000; i++) {
             System.out.println("Loop: " + i);
 //            Thread.sleep(5000);
-            takeSnapShot(driver, getFilePath(BADOO_SCREENSHOT_BASE, ".png"));
+            takeSnapShot(driver, getFilePath(badooScreenshotBase, ".png"));
             encounterPage.clickLike();
             encounterPage.clickSkipNoti();
         }
@@ -83,7 +85,7 @@ public class BadooLikeTest {
         Date date = new Date();
 
         // Now format the date
-        String formatDate= dateFormat.format(date);
+        String formatDate = dateFormat.format(date);
 
         // Build file path
         String filePath = prefix + formatDate + suffix;
@@ -93,7 +95,7 @@ public class BadooLikeTest {
 
     @Test
     public void testFilePath() {
-        String filePath = getFilePath(BADOO_SCREENSHOT_BASE, ".png");
+        String filePath = getFilePath(badooScreenshotBase, ".png");
         System.out.println(filePath);
     }
 }
