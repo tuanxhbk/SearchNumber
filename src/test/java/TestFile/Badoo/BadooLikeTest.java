@@ -56,8 +56,8 @@ public class BadooLikeTest {
 //        driver.get(encounterUrl);
         EncounterPage encounterPage = new EncounterPage(driver);
         // Outer loop
-        int outerLoopMax = 100;
-        int innerLoopMax = 10;
+        int outerLoopMax = 2;
+        int innerLoopMax = 2;
         for (int i = 0; i < outerLoopMax; i++) {
             for (int j = 0; j < innerLoopMax; j++) {
                 int loopTime = i * innerLoopMax + j + 1;
@@ -125,8 +125,8 @@ public class BadooLikeTest {
 
         if (!file.exists()) {
             badooListWriter = Files.newBufferedWriter(path);
-            badooListCsvPrinter = new CSVPrinter(badooListWriter, CSVFormat.DEFAULT.
-                    withHeader("Profile Name", "Profile Age", "About Me", "Profile Image Src"));
+            badooListCsvPrinter = new CSVPrinter(badooListWriter, CSVFormat.DEFAULT);
+            badooListCsvPrinter.printRecord("Profile Name", "Profile Age", "About Me", "Profile Image Src");
         } else {
             badooListWriter = Files.newBufferedWriter(path,
                     StandardOpenOption.APPEND, StandardOpenOption.CREATE);
