@@ -56,8 +56,8 @@ public class BadooLikeTest {
 //        driver.get(encounterUrl);
         EncounterPage encounterPage = new EncounterPage(driver);
         // Outer loop
-        int outerLoopMax = 2;
-        int innerLoopMax = 2;
+        int outerLoopMax = 100;
+        int innerLoopMax = 10;
         for (int i = 0; i < outerLoopMax; i++) {
             for (int j = 0; j < innerLoopMax; j++) {
                 int loopTime = i * innerLoopMax + j + 1;
