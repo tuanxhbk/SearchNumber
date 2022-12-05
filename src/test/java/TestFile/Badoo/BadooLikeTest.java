@@ -3,9 +3,12 @@ package TestFile.Badoo;
 import POM.Badoo.EncounterPage;
 import POM.Badoo.SignInPage;
 import Util.ConfigLoader;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.io.FileUtils;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -21,14 +24,28 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BadooLikeTest {
-    public static WebDriver driver;
+    public static ChromeDriver driver;
     public static ConfigLoader configLoader = ConfigLoader.getInstance();
-    public static String driverPath = configLoader.getChromeDriverPath();
-    private static String badooScreenshotBase = configLoader.getBadooScreenshotBase();
-    private static String badooListCsvPath = configLoader.getBadooListCsvPath();
+
+    @BeforeClass
+    public static void setUp() {
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless", "--window-size=1920,1200", "--ignore-certificate-errors");
+        driver = new ChromeDriver(options);
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    }
+
+    @AfterClass
+    public static void afterClass() {
+        driver.quit();
+    }
 
     @Test
     public void BadooLikeTest01() throws Exception {
@@ -36,15 +53,25 @@ public class BadooLikeTest {
 //        String encounterUrl = "https://badoo.com/encounters";
         String username = configLoader.getBadooUsername();
         String password = configLoader.getBadooPassword();
-
-        // Setting up Chrome driver path.
-        System.setProperty("webdriver.chrome.driver", driverPath);
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless", "--window-size=1920,1200", "--ignore-certificate-errors");
-        driver = new ChromeDriver(options);
+        String badooScreenshotBase = configLoader.getBadooScreenshotBase();
+        String badooListCsvPath = configLoader.getBadooListCsvPath();
 
         // Setup csv writer
         CSVPrinter badooListCsvPrinter = this.getBadooListCsvPrinter(getFilePath(badooListCsvPath, ".csv", "yyyyMMdd"));
+
+        // Geolocation
+        float geoLat = configLoader.getGeoLat();
+        float geoLong = configLoader.getGeoLong();
+        Map coordinates = new HashMap() {
+            {
+                put("latitude", geoLat);
+                put("longitude", geoLong);
+                put("accuracy", 1);
+            }
+        };
+
+        // Set browser geolocation
+        driver.executeCdpCommand("Emulation.setGeolocationOverride", coordinates);
 
         // Sign in
         driver.get(signInUrl);
@@ -53,7 +80,7 @@ public class BadooLikeTest {
         Thread.sleep(5000);
 
         // Like
-//        driver.get(encounterUrl);
+//        driver.navigate(encounterUrl);
         EncounterPage encounterPage = new EncounterPage(driver);
         // Outer loop
         int outerLoopMax = 100;
@@ -76,8 +103,6 @@ public class BadooLikeTest {
             badooListCsvPrinter.flush();
         }
         badooListCsvPrinter.close(true);
-
-        driver.quit();
     }
 
     /**
@@ -137,7 +162,29 @@ public class BadooLikeTest {
 
     @Test
     public void testFilePath() {
+        String badooScreenshotBase = configLoader.getBadooScreenshotBase();
         String filePath = getFilePath(badooScreenshotBase, ".png", "yyyyMMdd_HHmmss");
         System.out.println(filePath);
+    }
+
+    @Test
+    public void testGeolocation() throws Exception{
+        // Geolocation
+        float geoLat = configLoader.getGeoLat();
+        float geoLong = configLoader.getGeoLong();
+        Map coordinates = new HashMap() {
+            {
+                put("latitude", geoLat);
+                put("longitude", geoLong);
+                put("accuracy", 1);
+            }
+        };
+
+        // Set browser geolocation
+        driver.executeCdpCommand("Emulation.setGeolocationOverride", coordinates);
+
+        // Test location
+        driver.get("https://where-am-i.org/");
+        Thread.sleep(5000);
     }
 }
