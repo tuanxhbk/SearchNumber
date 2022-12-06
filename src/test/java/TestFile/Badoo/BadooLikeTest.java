@@ -82,10 +82,11 @@ public class BadooLikeTest {
         // Like
 //        driver.navigate(encounterUrl);
         EncounterPage encounterPage = new EncounterPage(driver);
-        // Outer loop
+        // Loop Like
         int outerLoopMax = 100;
         int innerLoopMax = 10;
-        for (int i = 0; i < outerLoopMax; i++) {
+        boolean hasNext = true;
+        for (int i = 0; (i < outerLoopMax) && (hasNext); i++) {
             for (int j = 0; j < innerLoopMax; j++) {
                 int loopTime = i * innerLoopMax + j + 1;
                 System.out.println("Loop: " + loopTime);
@@ -96,9 +97,15 @@ public class BadooLikeTest {
                 String profileAge = encounterPage.getProfileAge();
                 String aboutMe = encounterPage.getAboutMe();
                 String profileImageSrc = encounterPage.getProfileImageSrc();
-                badooListCsvPrinter.printRecord(profileName, profileAge, aboutMe, profileImageSrc);
-                encounterPage.clickLike();
-                encounterPage.clickSkipNoti();
+                if (profileName != "") {
+                    badooListCsvPrinter.printRecord(profileName, profileAge, aboutMe, profileImageSrc);
+                    encounterPage.clickLike();
+                    encounterPage.clickSkipNoti();
+                } else {
+                    hasNext = false;
+                    System.out.println("Done");
+                    break;
+                }
             }
             badooListCsvPrinter.flush();
         }
@@ -168,7 +175,7 @@ public class BadooLikeTest {
     }
 
     @Test
-    public void testGeolocation() throws Exception{
+    public void testGeolocation() throws Exception {
         // Geolocation
         float geoLat = configLoader.getGeoLat();
         float geoLong = configLoader.getGeoLong();
