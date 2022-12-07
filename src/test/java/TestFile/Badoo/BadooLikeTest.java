@@ -88,8 +88,8 @@ public class BadooLikeTest {
         boolean hasNext = true;
         for (int i = 0; (i < outerLoopMax) && (hasNext); i++) {
             for (int j = 0; j < innerLoopMax; j++) {
-                int loopTime = i * innerLoopMax + j + 1;
-                System.out.println("Loop: " + loopTime);
+                int loopCount = i * innerLoopMax + j + 1;
+                System.out.println("Loop: " + loopCount);
 //                Thread.sleep(5000);
 //                takeSnapShot(driver, getFilePath(badooScreenshotBase, ".png", "yyyyMMdd_HHmmss"));
 
