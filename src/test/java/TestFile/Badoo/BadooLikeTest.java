@@ -3,6 +3,7 @@ package TestFile.Badoo;
 import POM.Badoo.EncounterPage;
 import POM.Badoo.SignInPage;
 import Util.ConfigLoader;
+import Util.ImageUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
@@ -91,7 +92,7 @@ public class BadooLikeTest {
                 int loopCount = i * innerLoopMax + j + 1;
                 System.out.println("Loop: " + loopCount);
 //                Thread.sleep(5000);
-//                takeSnapShot(driver, getFilePath(badooScreenshotBase, ".png", "yyyyMMdd_HHmmss"));
+//                ImageUtils.takeScreenShot(driver, getFilePath(badooScreenshotBase, ".png", "yyyyMMdd_HHmmss"));
 
                 String profileName = encounterPage.getProfileName();
                 String profileAge = encounterPage.getProfileAge();
@@ -110,27 +111,6 @@ public class BadooLikeTest {
             badooListCsvPrinter.flush();
         }
         badooListCsvPrinter.close(true);
-    }
-
-    /**
-     * This function will take screenshot
-     *
-     * @param webdriver
-     * @param fileWithPath
-     * @throws Exception
-     */
-    public void takeSnapShot(WebDriver webdriver, String fileWithPath) throws Exception {
-        //Convert web driver object to TakeScreenshot
-        TakesScreenshot scrShot = ((TakesScreenshot) webdriver);
-
-        //Call getScreenshotAs method to create image file
-        File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
-
-        //Move image file to new destination
-        File DestFile = new File(fileWithPath);
-
-        //Copy file at destination
-        FileUtils.copyFile(SrcFile, DestFile);
     }
 
     public String getFilePath(String prefix, String suffix, String dateTimeFormat) {
