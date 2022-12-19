@@ -78,7 +78,7 @@ public class BadooLikeTest {
         driver.get(signInUrl);
         SignInPage signInPage = new SignInPage(driver);
         signInPage.signIn(username, password);
-        Thread.sleep(10000);
+        Thread.sleep(30000);
 
         // Like
 //        driver.navigate(encounterUrl);
