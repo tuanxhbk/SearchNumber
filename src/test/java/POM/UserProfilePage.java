@@ -2,6 +2,10 @@ package POM;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class UserProfilePage {
 
@@ -13,9 +17,9 @@ public class UserProfilePage {
 
     By txtDisplayName = By.cssSelector(".pi-mini-info-section__name");
 
-    By txtGender = By.cssSelector(".pi-info-section__info-list .pi-info-item_horizontal:nth-of-type(1) .pi-info-item__desc");
+    By txtGender = By.xpath("//span[@data-translate-inner='STR_PROFILE_LABEL_GENDER']/following-sibling::span/p");
 
-    By txtBirthday = By.cssSelector(".pi-info-section__info-list .pi-info-item_horizontal:nth-of-type(2) .pi-info-item__desc");
+    By txtBirthday = By.xpath("//span[@data-translate-inner='STR_PROFILE_LABEL_BIRTHDAY']/following-sibling::span/p");
 
     By btnBackToFindFriendPage = By.cssSelector(".fa-icon-solid-left");
 
@@ -28,18 +32,26 @@ public class UserProfilePage {
     }
 
     public String getDisplayName() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(txtDisplayName));
         return driver.findElement(txtDisplayName).getText();
     }
 
     public String getGender() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(txtGender));
         return driver.findElement(txtGender).getText();
     }
 
     public String getBirthday() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(txtBirthday));
         return driver.findElement(txtBirthday).getText();
     }
 
     public void backToFindFriendPage() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(btnBackToFindFriendPage));
         driver.findElement(btnBackToFindFriendPage).click();
     }
 }

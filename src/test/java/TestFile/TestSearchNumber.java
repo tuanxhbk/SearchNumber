@@ -19,6 +19,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class TestSearchNumber {
     WebDriver driver;
@@ -48,6 +49,7 @@ public class TestSearchNumber {
         // Create an object of Firefox Driver class and pass the Firefox Options object
         // as an argument
         driver = new FirefoxDriver(options);
+        driver.manage().window().maximize();
     }
 
     @Test
@@ -112,7 +114,7 @@ public class TestSearchNumber {
                         // Write YOB
                         ExcelUtils.setDataToCell(sheet, rowIndex, Constant.YOB_COLUMN_INDEX, yob);
                         Thread.sleep(1000);
-                        String imageFileName = uniformGender + "_" + phoneNumList.get(i);
+                        String imageFileName = phoneNumList.get(i) + "_" + uniformGender;
                         String fileWithPath = FileUtils.getImageFilePath(Constant.SCREENSHOT_FOLDER_PATH, imageFileName, "png");
                         // Take screenshot
                         ImageUtils.takeScreenShot(driver, fileWithPath);

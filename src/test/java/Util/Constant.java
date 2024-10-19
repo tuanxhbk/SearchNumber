@@ -8,7 +8,7 @@ public class Constant {
     public static final String BASE_URL = "https://chat.zalo.me/";
     public static final String SCREENSHOT_FOLDER_PATH = "src/test/resource/screenshot/viettel/969";
     public static final String FIREFOX_DRIVER_PATH = "src/test/resource/driver/geckodriver.exe";
-    public static final int START_ROW_NUM = 2;
+    public static final int START_ROW_NUM = 44;
     public static final int END_ROW_NUM = 1002;
     public static final String ZL_STATUS_NOT = "NOT";
     public static final String ZL_STATUS_REG = "REG";
