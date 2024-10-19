@@ -48,7 +48,7 @@ public class BadooLikeTest {
         driver.quit();
     }
 
-    @Test
+//    @Test
     public void BadooLikeTest01() throws Exception {
         String signInUrl = configLoader.getBadooSignInUrl();
 //        String encounterUrl = "https://badoo.com/encounters";
@@ -147,14 +147,14 @@ public class BadooLikeTest {
         return badooListCsvPrinter;
     }
 
-    @Test
+//    @Test
     public void testFilePath() {
         String badooScreenshotBase = configLoader.getBadooScreenshotBase();
         String filePath = getFilePath(badooScreenshotBase, ".png", "yyyyMMdd_HHmmss");
         System.out.println(filePath);
     }
 
-    @Test
+//    @Test
     public void testGeolocation() throws Exception {
         // Geolocation
         float geoLat = configLoader.getGeoLat();

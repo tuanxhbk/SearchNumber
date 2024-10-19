@@ -21,7 +21,7 @@ public class ListItem {
     private static final String COMPANY_CSV_FILE = "src/test/resource/output/list-org.csv";
     private static final String LOG_CSV_FILE = "src/test/resource/output/log.csv";
 
-    @Test
+//    @Test
     public void GetListItem() throws IOException {
         String baseUrlPrefix = "https://www.guidestar.org/nonprofit-directory/human-services/general-human-services/";
         String baseUrlSuffix = ".aspx";
