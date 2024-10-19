@@ -4,6 +4,7 @@ import POM.FindFriendPage;
 import POM.UserProfilePage;
 import POM.ZaloPage;
 import Util.*;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.After;
@@ -11,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,8 +26,28 @@ public class TestSearchNumber {
 
     @Before
     public void SetUp() {
-        System.setProperty("webdriver.gecko.driver", Constant.FIREFOX_DRIVER_PATH);
-        driver = new FirefoxDriver();
+//        System.setProperty("webdriver.gecko.driver", Constant.FIREFOX_DRIVER_PATH);
+//        // Create an object of Firefox Options class
+//        FirefoxOptions options = new FirefoxOptions();
+//
+//        // Set Firefox Headless mode as TRUE
+//        options.setHeadless(true);
+//
+//        // Create an object of WebDriver class and pass the Firefox Options object
+//        // as an argument
+//        driver = new FirefoxDriver(options);
+
+        WebDriverManager.firefoxdriver().setup();
+
+        // Create an object of Firefox Options class
+        FirefoxOptions options = new FirefoxOptions();
+
+        // Set Firefox Headless mode as TRUE
+//        options.setHeadless(true);
+
+        // Create an object of Firefox Driver class and pass the Firefox Options object
+        // as an argument
+        driver = new FirefoxDriver(options);
     }
 
     @Test
@@ -96,7 +118,7 @@ public class TestSearchNumber {
                         ImageUtils.takeScreenShot(driver, fileWithPath);
                         // Write screenshot link into Excel file
                         // TO DO
-                        userProfilePage.clearPhone();
+                        userProfilePage.backToFindFriendPage();
                         Thread.sleep(1000);
                     } else {
                         // Process when phone number has NOT been registered Zl
@@ -129,6 +151,6 @@ public class TestSearchNumber {
 
     @After
     public void TearDown() {
-//        driver.quit();
+        driver.quit();
     }
 }

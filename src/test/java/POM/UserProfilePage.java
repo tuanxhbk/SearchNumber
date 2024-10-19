@@ -11,21 +11,20 @@ public class UserProfilePage {
 
     By btnSendMsg = By.cssSelector("[data-translate-inner='STR_CHAT']");
 
-    By txtDisplayName = By.cssSelector(".friend-profile__display-name");
+    By txtDisplayName = By.cssSelector(".pi-mini-info-section__name");
 
-    By txtGender = By.xpath("//div[@id='profile-info']//div[@class='user-profile-details']//div[@class='user-profile-details__line'][1]/span[2]");
+    By txtGender = By.cssSelector(".pi-info-section__info-list .pi-info-item_horizontal:nth-of-type(1) .pi-info-item__desc");
 
-    By txtBirthday = By.xpath("//div[@id='profile-info']//div[@class='user-profile-details']//div[@class='user-profile-details__line'][2]/span[2]");
+    By txtBirthday = By.cssSelector(".pi-info-section__info-list .pi-info-item_horizontal:nth-of-type(2) .pi-info-item__desc");
 
-    By btnClearPhone = By.cssSelector(".fa-close_24");
+    By btnBackToFindFriendPage = By.cssSelector(".fa-icon-solid-left");
 
     public UserProfilePage(WebDriver driver) {
         this.driver = driver;
     }
 
     public boolean isZlRegistered() {
-        boolean zlRegistered = driver.findElements(btnSendMsg).size() != 0;
-        return zlRegistered;
+        return !driver.findElements(btnSendMsg).isEmpty();
     }
 
     public String getDisplayName() {
@@ -40,8 +39,7 @@ public class UserProfilePage {
         return driver.findElement(txtBirthday).getText();
     }
 
-    public FindFriendPage clearPhone() {
-        driver.findElement(btnClearPhone).click();
-        return new FindFriendPage(driver);
+    public void backToFindFriendPage() {
+        driver.findElement(btnBackToFindFriendPage).click();
     }
 }

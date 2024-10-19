@@ -9,7 +9,7 @@ public class FindFriendPage {
 
     By txtbxPhoneNumber = By.cssSelector("[class='phone-i-input flx-1']");
 
-    By btnFindFriend = By.xpath("//body//div[@data-translate-inner='STR_SEARCH']");
+    By btnFindFriend = By.cssSelector(".btn-primary [data-translate-inner]");
 
     public FindFriendPage(WebDriver driver) {
         this.driver = driver;
@@ -21,7 +21,7 @@ public class FindFriendPage {
         driver.findElement(txtbxPhoneNumber).sendKeys(strPhoneNumber);
     }
 
-    //    Set phone number in text box
+    //    Click find friend
     public UserProfilePage findFriend() {
         driver.findElement(btnFindFriend).click();
         return new UserProfilePage(this.driver);

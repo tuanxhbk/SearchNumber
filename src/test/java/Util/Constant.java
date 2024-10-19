@@ -8,8 +8,8 @@ public class Constant {
     public static final String BASE_URL = "https://chat.zalo.me/";
     public static final String SCREENSHOT_FOLDER_PATH = "src/test/resource/screenshot/viettel/969";
     public static final String FIREFOX_DRIVER_PATH = "src/test/resource/driver/geckodriver.exe";
-    public static final int START_ROW_NUM = 610887;
-    public static final int END_ROW_NUM = 700001;
+    public static final int START_ROW_NUM = 700001;
+    public static final int END_ROW_NUM = 700010;
     public static final String ZL_STATUS_NOT = "NOT";
     public static final String ZL_STATUS_REG = "REG";
 
@@ -32,5 +32,5 @@ public class Constant {
     public static final String U_GENGER_FEMALE = "F";
 
     // Wait to scan QR code (ms)
-    public static final int WAIT_QR = 20000;
+    public static final int WAIT_QR = 30000;
 }
