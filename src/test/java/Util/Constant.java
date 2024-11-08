@@ -33,4 +33,13 @@ public class Constant {
 
     // Wait to scan QR code (ms)
     public static final int WAIT_QR = 30000;
+
+    // Stock chart
+    public static final String BASE_STOCK_CHART_URL = "https://stockchart.vietstock.vn/?stockcode=";
+    public static final String HSX_STOCK_LIST = "src/test/resource/stock/hsx/hsx_stock_list.xlsx";
+    public static final String HSX_STOCK_LIST_SHEET_NAME = "HSX_Stock_List";
+    public static final int HSX_STOCK_COLUMN_INDEX = 0;
+    public static final int HSX_STOCK_SYMBOL_START_INDEX = 2;
+    public static final int HSX_STOCK_SYMBOL_END_INDEX = 414;
+    public static final String HSX_CHART_SCREENSHOT_FOLDER = "src/test/resource/stock/hsx/chart/2024/20241108/images";
 }
