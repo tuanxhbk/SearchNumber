@@ -36,17 +36,17 @@ public class TestScreenshotChart {
     }
 
     @Test
-    public void TestScreenshotChart01() throws Exception {
+    public void TestScreenshotChartHSX() throws Exception {
         try {
             File hsx_stock_list = new File(Constant.HSX_STOCK_LIST);
 
-            //Create an object of FileInputStream class to read excel file
+            //Create an object of FileInputStream class to read Excel file
             FileInputStream fis = new FileInputStream(hsx_stock_list);
 
             //Create object of XSSFWorkbook class
             XSSFWorkbook wb = new XSSFWorkbook(fis);
 
-            //Read excel sheet by sheet name
+            //Read Excel sheet by sheet name
             XSSFSheet sheet = wb.getSheet(Constant.HSX_STOCK_LIST_SHEET_NAME);
 
             // Get list of stock symbols
