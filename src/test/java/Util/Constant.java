@@ -41,5 +41,5 @@ public class Constant {
     public static final int HSX_STOCK_COLUMN_INDEX = 0;
     public static final int HSX_STOCK_SYMBOL_START_INDEX = 2;
     public static final int HSX_STOCK_SYMBOL_END_INDEX = 414;
-    public static final String HSX_CHART_SCREENSHOT_FOLDER = "src/test/resource/stock/hsx/chart/2024/20241111/images";
+    public static final String HSX_CHART_SCREENSHOT_FOLDER = "src/test/resource/stock/hsx/chart/2024/20241112/images";
 }
