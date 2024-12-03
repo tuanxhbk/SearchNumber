@@ -1,8 +1,8 @@
 package TestFile;
 
-import POM.FindFriendPage;
-import POM.UserProfilePage;
-import POM.ZaloPage;
+import POM.Zalo.FindFriendPage;
+import POM.Zalo.UserProfilePage;
+import POM.Zalo.ZaloPage;
 import Util.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -19,7 +19,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class TestSearchNumber {
     WebDriver driver;
