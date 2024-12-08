@@ -36,7 +36,7 @@ public class TestScreenshotChart {
     }
 
     @Test
-    public void TestScreenshotChartHSX() throws Exception {
+    public void TestScreenshotDailyChartHSX() throws Exception {
         try {
             File hsx_stock_list = new File(Constant.HSX_STOCK_LIST);
 
@@ -56,16 +56,16 @@ public class TestScreenshotChart {
             // Loop through stock symbol list and take chart's screenshot
             int i = 0;
             while (i < stockSymbolList.size()) {
-                String chartUrl = Constant.BASE_STOCK_CHART_URL + stockSymbolList.get(i);
+                String dailyChartUrl = Constant.BASE_STOCK_CHART_URL + stockSymbolList.get(i);
 
-                driver.get(chartUrl);
+                driver.get(dailyChartUrl);
 
                 Thread.sleep(1000);
                 String imageFileName = stockSymbolList.get(i);
                 // Need to change folder each day
-                String fileWithPath = FileUtils.getImageFilePath(Constant.HSX_CHART_SCREENSHOT_FOLDER, imageFileName, "png");
+                String dailyFileWithPath = FileUtils.getImageFilePath(Constant.HSX_CHART_SCREENSHOT_FOLDER, imageFileName, "png");
                 // Take screenshot
-                ImageUtils.takeScreenShot(driver, fileWithPath);
+                ImageUtils.takeScreenShot(driver, dailyFileWithPath);
                 Thread.sleep(1000);
                 i++;
             }
@@ -76,7 +76,6 @@ public class TestScreenshotChart {
             e.printStackTrace();
         }
     }
-
     @After
     public void TearDown() {
         driver.quit();

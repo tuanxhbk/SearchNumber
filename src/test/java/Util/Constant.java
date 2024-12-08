@@ -36,6 +36,8 @@ public class Constant {
 
     // Stock chart
     public static final String BASE_STOCK_CHART_URL = "https://stockchart.vietstock.vn/?stockcode=";
+    // https://stockchart.vietstock.vn/?stockcode=
+    // https://vn.tradingview.com/chart/?symbol=
     public static final String HSX_STOCK_LIST = "src/test/resource/stock/hsx/hsx_stock_list.xlsx";
     public static final String HSX_STOCK_LIST_SHEET_NAME = "HSX_Stock_List";
     public static final int HSX_STOCK_COLUMN_INDEX = 0;
