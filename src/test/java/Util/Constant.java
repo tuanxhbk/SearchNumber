@@ -38,10 +38,11 @@ public class Constant {
     public static final String BASE_STOCK_CHART_URL = "https://stockchart.vietstock.vn/?stockcode=";
     // https://stockchart.vietstock.vn/?stockcode=
     // https://vn.tradingview.com/chart/?symbol=
+    public static final String BASE_STOCK_CHART_URL_2 = "https://stockchart.vietstock.vn";
     public static final String HSX_STOCK_LIST = "src/test/resource/stock/hsx/hsx_stock_list.xlsx";
     public static final String HSX_STOCK_LIST_SHEET_NAME = "HSX_Stock_List";
     public static final int HSX_STOCK_COLUMN_INDEX = 0;
     public static final int HSX_STOCK_SYMBOL_START_INDEX = 2;
     public static final int HSX_STOCK_SYMBOL_END_INDEX = 414;
-    public static final String HSX_CHART_SCREENSHOT_FOLDER = "src/test/resource/stock/hsx/chart/2025/20250328/images";
+    public static final String HSX_CHART_SCREENSHOT_FOLDER = "src/test/resource/stock/hsx/chart/2025/20250401/images";
 }
