@@ -8,33 +8,33 @@ import org.openqa.selenium.interactions.Actions;
 
 public class StockChartPage {
 
-    WebDriver driver;
+    private WebDriver driver;
 
-    By btnInterval = By.xpath("//div[text()='D'][1]");
-    By btnIntervalDaily = By.xpath("//span[text()='1 ngày']");
-    By btnIntervalWeekly = By.xpath("//span[text()='1 tuần']");
-    By btnIntervalMonthly = By.xpath("//span[text()='1 tháng']");
-    By iframe = By.xpath("//iframe[@title='Financial Chart']");
+    private By btnInterval = By.xpath("//div[text()='D'][1]");
+    private By btnIntervalDaily = By.xpath("//span[text()='1 ngày']");
+    private By btnIntervalWeekly = By.xpath("//span[text()='1 tuần']");
+    private By btnIntervalMonthly = By.xpath("//span[text()='1 tháng']");
+    private By iframe = By.xpath("//iframe[@title='Financial Chart']");
 
     // Login
-    By btnLogin = By.className("btnlogin");
-    By inputEmail = By.xpath("//form[@id='form1']//input[@id='txtEmailLogin']");
-    By inputPassword = By.xpath("//form[@id='form1']//input[@id='txtPassword']");
-    By btnLoginAccount = By.id("btnLoginAccount");
+    private By btnLogin = By.className("btnlogin");
+    private By inputEmail = By.xpath("//form[@id='form1']//input[@id='txtEmailLogin']");
+    private By inputPassword = By.xpath("//form[@id='form1']//input[@id='txtPassword']");
+    private By btnLoginAccount = By.id("btnLoginAccount");
 
     // Load saved chart
-    By btnLoadChart = By.xpath("//div[@data-name='save-load-menu']");
-    By lblLoadChart = By.xpath("//span[contains(text(),'Tải bố cục')]");
-    By lblChart = By.xpath("//div[contains(text(),'1D Technical Simple')]");
-    By btnClose = By.xpath("//button[@data-name='close']");
+    private By btnLoadChart = By.xpath("//div[@data-name='save-load-menu']");
+    private By lblLoadChart = By.xpath("//span[contains(text(),'Tải bố cục')]");
+    private By lblChart = By.xpath("//div[contains(text(),'1D Technical Simple')]");
+    private By btnClose = By.xpath("//button[@data-name='close']");
 
     // Search symbol
-    By divHeaderToolbarSymbolSearch = By.id("header-toolbar-symbol-search");
-    By inputSearchSymbol = By.xpath("//input[@data-role='search']");
-    By firstItem = By.xpath("//div[@data-role='list-item'][1]/div[1]");
+    private By divHeaderToolbarSymbolSearch = By.id("header-toolbar-symbol-search");
+    private By inputSearchSymbol = By.xpath("//input[@data-role='search']");
+    private By firstItem = By.xpath("//div[@data-role='list-item'][1]/div[1]");
 
     // Other element
-    By btnHuongDan = By.className("btnHuongDan");
+    private By btnHuongDan = By.className("btnHuongDan");
 
     public StockChartPage(WebDriver driver) {
         this.driver = driver;

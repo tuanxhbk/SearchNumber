@@ -51,8 +51,8 @@ public class TestScreenshotChart {
             XSSFSheet sheet = wb.getSheet(Constant.HSX_STOCK_LIST_SHEET_NAME);
 
             // Get list of stock symbols
-            List<String> stockSymbolList = ExcelUtils.getDataInColumnFromTo(sheet, Constant.HSX_STOCK_COLUMN_INDEX, Constant.HSX_STOCK_SYMBOL_START_INDEX,
-                    Constant.HSX_STOCK_SYMBOL_END_INDEX);
+            List<String> stockSymbolList = ExcelUtils.getDataInColumnFromTo(sheet, Constant.HSX_STOCK_COLUMN_INDEX,
+                    Constant.HSX_STOCK_SYMBOL_START_INDEX, Constant.HSX_STOCK_SYMBOL_END_INDEX);
 
             // Loop through stock symbol list and take chart's screenshot
             int i = 0;
@@ -64,7 +64,8 @@ public class TestScreenshotChart {
                 Thread.sleep(1000);
                 String imageFileName = stockSymbolList.get(i);
                 // Need to change folder each day
-                String dailyFileWithPath = FileUtils.getImageFilePath(Constant.HSX_CHART_SCREENSHOT_FOLDER, imageFileName, "png");
+                String dailyFileWithPath = FileUtils.getImageFilePath(Constant.HSX_CHART_SCREENSHOT_FOLDER,
+                        imageFileName, "png");
                 // Take screenshot
                 ImageUtils.takeScreenShot(driver, dailyFileWithPath);
                 Thread.sleep(1000);
@@ -94,13 +95,13 @@ public class TestScreenshotChart {
             XSSFSheet sheet = wb.getSheet(Constant.HSX_STOCK_LIST_SHEET_NAME);
 
             // Get list of stock symbols
-            List<String> stockSymbolList = ExcelUtils.getDataInColumnFromTo(sheet, Constant.HSX_STOCK_COLUMN_INDEX, Constant.HSX_STOCK_SYMBOL_START_INDEX,
-                    Constant.HSX_STOCK_SYMBOL_END_INDEX);
+            List<String> stockSymbolList = ExcelUtils.getDataInColumnFromTo(sheet, Constant.HSX_STOCK_COLUMN_INDEX,
+                    Constant.HSX_STOCK_SYMBOL_START_INDEX, Constant.HSX_STOCK_SYMBOL_END_INDEX);
 
             // Login and laod chart
             driver.get(Constant.BASE_STOCK_CHART_URL_2);
             StockChartPage stockChartPage = new StockChartPage(driver);
-            stockChartPage.Login("nguyenmanhtuanxh@gmail.com", "50503324");
+            stockChartPage.Login(Constant.VIETSTOCK_USERNAME, Constant.VIETSTOCK_PASSWORD);
             stockChartPage.LoadChart();
             // Loop through stock symbol list and take chart's screenshot
             int i = 0;
@@ -112,7 +113,8 @@ public class TestScreenshotChart {
 //                Thread.sleep(1000);
                 String imageFileName = symbol;
                 // Need to change folder each day
-                String dailyFileWithPath = FileUtils.getImageFilePath(Constant.HSX_CHART_SCREENSHOT_FOLDER, imageFileName, "png");
+                String dailyFileWithPath = FileUtils.getImageFilePath(Constant.HSX_CHART_SCREENSHOT_FOLDER,
+                        imageFileName, "png");
                 // Take screenshot
                 ImageUtils.takeScreenShot(driver, dailyFileWithPath);
                 Thread.sleep(1000);
