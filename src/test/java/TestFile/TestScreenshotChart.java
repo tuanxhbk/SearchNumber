@@ -36,7 +36,7 @@ public class TestScreenshotChart {
         driver.manage().window().maximize();
     }
 
-    @Test
+    /*@Test
     public void TestScreenshotDailyChartHSX() throws Exception {
         try {
             File hsx_stock_list = new File(Constant.HSX_STOCK_LIST);
@@ -77,7 +77,7 @@ public class TestScreenshotChart {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     @Test
     public void TestScreenshotDailyChartHSXWithSavedChart() throws Exception {
@@ -127,6 +127,105 @@ public class TestScreenshotChart {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void TestScreenshotDailyChartHNXWithSavedChart() throws Exception {
+
+        try {
+            File hnx_stock_list = new File(Constant.HNX_STOCK_LIST);
+
+            //Create an object of FileInputStream class to read Excel file
+            FileInputStream fis = new FileInputStream(hnx_stock_list);
+
+            //Create object of XSSFWorkbook class
+            XSSFWorkbook wb = new XSSFWorkbook(fis);
+
+            //Read Excel sheet by sheet name
+            XSSFSheet sheet = wb.getSheet(Constant.HNX_STOCK_LIST_SHEET_NAME);
+
+            // Get list of stock symbols
+            List<String> stockSymbolList = ExcelUtils.getDataInColumnFromTo(sheet, Constant.HNX_STOCK_COLUMN_INDEX,
+                    Constant.HNX_STOCK_SYMBOL_START_INDEX, Constant.HNX_STOCK_SYMBOL_END_INDEX);
+
+            // Login and laod chart
+            driver.get(Constant.BASE_STOCK_CHART_URL_2);
+            StockChartPage stockChartPage = new StockChartPage(driver);
+            stockChartPage.Login(Constant.VIETSTOCK_USERNAME, Constant.VIETSTOCK_PASSWORD);
+            stockChartPage.LoadChart();
+            // Loop through stock symbol list and take chart's screenshot
+            int i = 0;
+            while (i < stockSymbolList.size()) {
+                String symbol = stockSymbolList.get(i);
+                System.out.println("Process symbol: " + symbol);
+                stockChartPage.SearchSymbol(symbol);
+
+//                Thread.sleep(1000);
+                String imageFileName = symbol;
+                // Need to change folder each day
+                String dailyFileWithPath = FileUtils.getImageFilePath(Constant.HNX_CHART_SCREENSHOT_FOLDER,
+                        imageFileName, "png");
+                // Take screenshot
+                ImageUtils.takeScreenShot(driver, dailyFileWithPath);
+                Thread.sleep(1000);
+                i++;
+            }
+
+            // Close FileInputStream
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void TestScreenshotDailyChartUPCOMWithSavedChart() throws Exception {
+
+        try {
+            File upcom_stock_list = new File(Constant.UPCOM_STOCK_LIST);
+
+            //Create an object of FileInputStream class to read Excel file
+            FileInputStream fis = new FileInputStream(upcom_stock_list);
+
+            //Create object of XSSFWorkbook class
+            XSSFWorkbook wb = new XSSFWorkbook(fis);
+
+            //Read Excel sheet by sheet name
+            XSSFSheet sheet = wb.getSheet(Constant.UPCOM_STOCK_LIST_SHEET_NAME);
+
+            // Get list of stock symbols
+            List<String> stockSymbolList = ExcelUtils.getDataInColumnFromTo(sheet, Constant.UPCOM_STOCK_COLUMN_INDEX,
+                    Constant.UPCOM_STOCK_SYMBOL_START_INDEX, Constant.UPCOM_STOCK_SYMBOL_END_INDEX);
+
+            // Login and laod chart
+            driver.get(Constant.BASE_STOCK_CHART_URL_2);
+            StockChartPage stockChartPage = new StockChartPage(driver);
+            stockChartPage.Login(Constant.VIETSTOCK_USERNAME, Constant.VIETSTOCK_PASSWORD);
+            stockChartPage.LoadChart();
+            // Loop through stock symbol list and take chart's screenshot
+            int i = 0;
+            while (i < stockSymbolList.size()) {
+                String symbol = stockSymbolList.get(i);
+                System.out.println("Process symbol: " + symbol);
+                stockChartPage.SearchSymbol(symbol);
+
+//                Thread.sleep(1000);
+                String imageFileName = symbol;
+                // Need to change folder each day
+                String dailyFileWithPath = FileUtils.getImageFilePath(Constant.UPCOM_CHART_SCREENSHOT_FOLDER,
+                        imageFileName, "png");
+                // Take screenshot
+                ImageUtils.takeScreenShot(driver, dailyFileWithPath);
+                Thread.sleep(1000);
+                i++;
+            }
+
+            // Close FileInputStream
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @After
     public void TearDown() {
         driver.quit();
