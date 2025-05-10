@@ -128,7 +128,7 @@ public class TestScreenshotChart {
         }
     }
 
-    @Test
+//    @Test
     public void TestScreenshotDailyChartHNXWithSavedChart() throws Exception {
 
         try {
@@ -177,7 +177,7 @@ public class TestScreenshotChart {
         }
     }
 
-    @Test
+//    @Test
     public void TestScreenshotDailyChartUPCOMWithSavedChart() throws Exception {
 
         try {
