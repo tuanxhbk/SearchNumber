@@ -34,10 +34,6 @@ public class StockChartPage {
     // Search symbol
     private By divHeaderToolbarSymbolSearch = By.id("header-toolbar-symbol-search");
     private By inputSearchSymbol = By.xpath("//input[@data-role='search']");
-    private By firstItem = By.xpath("//div[@data-role='list-item'][1]/div[1]");
-
-    // Other element
-    private By btnHuongDan = By.className("btnHuongDan");
 
     public StockChartPage(WebDriver driver) {
         this.driver = driver;
@@ -107,7 +103,7 @@ public class StockChartPage {
         driver.findElement(divHeaderToolbarSymbolSearch).click();
         driver.findElement(inputSearchSymbol).clear();
         driver.findElement(inputSearchSymbol).sendKeys(symbol, Keys.RETURN);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         // Switch to default frame
         driver.switchTo().defaultContent();

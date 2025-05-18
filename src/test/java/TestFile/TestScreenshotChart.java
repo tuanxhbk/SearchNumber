@@ -126,6 +126,9 @@ public class TestScreenshotChart {
                 i++;
             }
 
+            // Close workbook
+            wb.close();
+
             // Close FileInputStream
             fis.close();
         } catch (IOException e) {
@@ -175,6 +178,9 @@ public class TestScreenshotChart {
                 i++;
             }
 
+            // Close workbook
+            wb.close();
+
             // Close FileInputStream
             fis.close();
         } catch (IOException e) {
@@ -223,6 +229,9 @@ public class TestScreenshotChart {
                 Thread.sleep(1000);
                 i++;
             }
+
+            // Close workbook
+            wb.close();
 
             // Close FileInputStream
             fis.close();
