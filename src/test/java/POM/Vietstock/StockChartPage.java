@@ -1,10 +1,13 @@
 package POM.Vietstock;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class StockChartPage {
 
@@ -40,7 +43,7 @@ public class StockChartPage {
         this.driver = driver;
     }
 
-    //    Set interval
+    // Set interval
     public void SetInterval(String interval) {
         try {
             WebElement iframe = driver.findElement(this.iframe);
@@ -81,9 +84,15 @@ public class StockChartPage {
         WebElement iframe = driver.findElement(this.iframe);
         driver.switchTo().frame(iframe);
 
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(btnLoadChart));
         driver.findElement(btnLoadChart).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(lblLoadChart));
         driver.findElement(lblLoadChart).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(lblChart));
         driver.findElement(lblChart).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(btnClose));
         driver.findElement(btnClose).click();
 
         // Switch to default frame
