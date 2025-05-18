@@ -3,3 +3,4 @@ target/
 src/test/resource/screenshot/
 *.iml
 src/test/resource/stock/hsx/chart/Archive/
+.vscode/settings.json
