@@ -17,7 +17,7 @@ public class StockChartPage {
     private By btnIntervalDaily = By.xpath("//span[text()='1 ngày']");
     private By btnIntervalWeekly = By.xpath("//span[text()='1 tuần']");
     private By btnIntervalMonthly = By.xpath("//span[text()='1 tháng']");
-    private By iframe = By.xpath("//iframe[@title='Financial Chart']");
+    private By iframeFinancialChart = By.xpath("//iframe[@title='Financial Chart']");
 
     // Login
     private By btnLogin = By.className("btnlogin");
@@ -42,7 +42,7 @@ public class StockChartPage {
     // Set interval
     public void SetInterval(String interval) {
         try {
-            WebElement iframe = driver.findElement(this.iframe);
+            WebElement iframe = driver.findElement(this.iframeFinancialChart);
             driver.switchTo().frame(iframe);
             driver.findElement(btnInterval).click();
             Thread.sleep(1000);
@@ -77,8 +77,8 @@ public class StockChartPage {
 
     public void LoadChart() {
         // Switch to iframe
-        WebElement iframe = driver.findElement(this.iframe);
-        driver.switchTo().frame(iframe);
+        WebElement iframeFinancialChart = driver.findElement(this.iframeFinancialChart);
+        driver.switchTo().frame(iframeFinancialChart);
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
@@ -97,7 +97,7 @@ public class StockChartPage {
 
     public void SearchSymbol(String symbol) throws Exception {
         // Switch to iframe
-        WebElement iframe = driver.findElement(this.iframe);
+        WebElement iframe = driver.findElement(this.iframeFinancialChart);
         driver.switchTo().frame(iframe);
 
         driver.findElement(divHeaderToolbarSymbolSearch).click();
