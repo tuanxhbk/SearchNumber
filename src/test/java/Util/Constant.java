@@ -41,22 +41,25 @@ public class Constant {
     public static final String BASE_STOCK_CHART_URL_2 = "https://stockchart.vietstock.vn";
     public static final String VIETSTOCK_USERNAME = "nguyenmanhtuanxh@gmail.com";
     public static final String VIETSTOCK_PASSWORD = "50503324";
-    public static final String HSX_STOCK_LIST = "src/test/resource/stock/hsx/hsx_stock_list.xlsx";
+    // HOSE related constants
+    public static final String HSX_STOCK_LIST = "src/test/resource/stock/hsx/stock_list/hsx_stock_list.xlsx";
     public static final String HSX_STOCK_LIST_SHEET_NAME = "HSX_Stock_List";
     public static final int HSX_STOCK_COLUMN_INDEX = 0;
     public static final int HSX_STOCK_SYMBOL_START_INDEX = 2;
     public static final int HSX_STOCK_SYMBOL_END_INDEX = 413;
-    public static final String HSX_CHART_SCREENSHOT_FOLDER = "src/test/resource/stock/hsx/chart/2025/20250411/images";
-    public static final String HNX_STOCK_LIST = "src/test/resource/stock/hnx/hnx_stock_list.xlsx";
+    public static final String HSX_CHART_SCREENSHOT_FOLDER = "src/test/resource/stock/hsx/images";
+    // HNX related constants
+    public static final String HNX_STOCK_LIST = "src/test/resource/stock/hnx/stock_list/hnx_stock_list.xlsx";
     public static final String HNX_STOCK_LIST_SHEET_NAME = "HNX_Stock_List";
     public static final int HNX_STOCK_COLUMN_INDEX = 0;
     public static final int HNX_STOCK_SYMBOL_START_INDEX = 2;
     public static final int HNX_STOCK_SYMBOL_END_INDEX = 312;
-    public static final String HNX_CHART_SCREENSHOT_FOLDER = "src/test/resource/stock/hnx/chart/2025/20250411/images";
-    public static final String UPCOM_STOCK_LIST = "src/test/resource/stock/upcom/upcom_stock_list.xlsx";
+    public static final String HNX_CHART_SCREENSHOT_FOLDER = "src/test/resource/stock/hnx/images";
+    // UPCOM related constants
+    public static final String UPCOM_STOCK_LIST = "src/test/resource/stock/upcom/stock_list/upcom_stock_list.xlsx";
     public static final String UPCOM_STOCK_LIST_SHEET_NAME = "UPCOM_Stock_List";
     public static final int UPCOM_STOCK_COLUMN_INDEX = 0;
     public static final int UPCOM_STOCK_SYMBOL_START_INDEX = 2;
     public static final int UPCOM_STOCK_SYMBOL_END_INDEX = 887;
-    public static final String UPCOM_CHART_SCREENSHOT_FOLDER = "src/test/resource/stock/upcom/chart/2025/20250411/images";
+    public static final String UPCOM_CHART_SCREENSHOT_FOLDER = "src/test/resource/stock/upcom/images";
 }
