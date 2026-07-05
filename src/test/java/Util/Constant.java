@@ -46,7 +46,7 @@ public class Constant {
     public static final String HSX_STOCK_LIST_SHEET_NAME = "HSX_Stock_List";
     public static final int HSX_STOCK_COLUMN_INDEX = 0;
     public static final int HSX_STOCK_SYMBOL_START_INDEX = 2;
-    public static final int HSX_STOCK_SYMBOL_END_INDEX = 413;
+    public static final int HSX_STOCK_SYMBOL_END_INDEX = 429;
     public static final String HSX_CHART_SCREENSHOT_FOLDER = "src/test/resource/stock/hsx/images";
     // HNX related constants
     public static final String HNX_STOCK_LIST = "src/test/resource/stock/hnx/stock_list/hnx_stock_list.xlsx";
