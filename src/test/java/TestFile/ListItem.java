@@ -38,12 +38,12 @@ public class ListItem {
 
         try (
                 BufferedWriter companyWriter = Files.newBufferedWriter(Paths.get(COMPANY_CSV_FILE));
-                CSVPrinter companyCsvPrinter = new CSVPrinter(companyWriter, CSVFormat.DEFAULT
-                        .withHeader("Company"));
+                CSVPrinter companyCsvPrinter = new CSVPrinter(companyWriter, CSVFormat.DEFAULT.builder()
+                        .setHeader("Company").build());
 
                 BufferedWriter logWriter = Files.newBufferedWriter(Paths.get(LOG_CSV_FILE));
-                CSVPrinter logCsvPrinter = new CSVPrinter(logWriter, CSVFormat.DEFAULT
-                        .withHeader("Url", "No of items"));
+                CSVPrinter logCsvPrinter = new CSVPrinter(logWriter, CSVFormat.DEFAULT.builder()
+                        .setHeader("Url", "No of items").build());
                 ) {
             for(int baseIndex = 1; baseIndex <= allPage; baseIndex++) {
                 String pageUrl = baseUrlPrefix + baseIndex + baseUrlSuffix;
